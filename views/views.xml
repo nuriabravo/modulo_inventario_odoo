@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+		<!-- Vistas de Tree-->
+		<!-- Vista de Árbol para Proveedores -->
+    	<record id="view_proveedor_tree" model="ir.ui.view">
+        	<field name="name">inventario.proveedor.tree</field>
+        	<field name="model">inventario.proveedor</field>
+        	<field name="arch" type="xml">
+            	<tree>
+                	<field name="name"/>
+                	<field name="direccion"/>
+                	<field name="telefono"/>
+            	</tree>
+        	</field>
+    	</record>
+
+		<record id="view_producto_tree" model="ir.ui.view">
+			<field name="name">inventario.producto.tree</field>
+			<field name="model">inventario.producto</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="descripcion"/>
+					<!-- Agrega otros campos de producto si es necesario -->
+				</tree>
+			</field>
+		</record>
+
+
+    	<!-- Vista de Árbol para Pedidos de Compra -->
+    	<record id="view_pedido_compra_tree" model="ir.ui.view">
+        	<field name="name">inventario.compra.tree</field>
+        	<field name="model">inventario.compra</field>
+        	<field name="arch" type="xml">
+            	<tree>
+                	<field name="proveedor_id"/>
+                	<field name="productos"/>
+            	</tree>
+        	</field>
+    	</record>
+
+    	<!-- Vista de Árbol para Líneas de Pedidos de Compra -->
+    	<record id="view_pedido_compra_linea_tree" model="ir.ui.view">
+        	<field name="name">inventario.linea_compra.tree</field>
+        	<field name="model">inventario.linea_compra</field>
+        	<field name="arch" type="xml">
+            	<tree>
+                	<field name="producto_id"/>
+                	<field name="cantidad"/>
+                	<field name="precio_unitario"/>
+                	<field name="pedido_compra_id"/>
+            	</tree>
+        	</field>
+    	</record>
+
+    	<!-- Vista de Árbol para Pedidos de Venta -->
+    	<record id="view_pedido_venta_tree" model="ir.ui.view">
+        	<field name="name">inventario.venta.tree</field>
+        	<field name="model">inventario.venta</field>
+        	<field name="arch" type="xml">
+            	<tree>
+                	<field name="cliente_id"/>
+                	<field name="productos"/>
+            	</tree>
+        	</field>
+    	</record>
+
+    	<!-- Vista de Árbol para Clientes -->
+    	<record id="view_cliente_tree" model="ir.ui.view">
+        	<field name="name">inventario.cliente.tree</field>
+        	<field name="model">inventario.cliente</field>
+        	<field name="arch" type="xml">
+            	<tree>
+                	<field name="name"/>
+                	<field name="direccion"/>
+                	<field name="telefono"/>
+                	<field name="pedidos_venta_ids"/>
+            	</tree>
+        	</field>
+    	</record>
+
+    	<!-- Vista de Árbol para Líneas de Pedidos de Venta -->
+    	<record id="view_pedido_venta_linea_tree" model="ir.ui.view">
+        	<field name="name">inventario.linea_venta.tree</field>
+        	<field name="model">inventario.linea_venta</field>
+        	<field name="arch" type="xml">
+            	<tree>
+                	<field name="producto_id"/>
+                	<field name="cantidad"/>
+                	<field name="precio_unitario"/>
+                	<field name="pedido_venta_id"/>
+            	</tree>
+        	</field>
+    	</record>
+
+
+        <!-- Proveedor -->
+        <record id="model_proveedor" model="ir.actions.act_window">
+            <field name="name">Proveedores</field>
+            <field name="res_model">inventario.proveedor</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="view_proveedor_form" model="ir.ui.view">
+            <field name="name">inventario.proveedor_form</field>
+            <field name="model">inventario.proveedor</field>
+            <field name="arch" type="xml">
+                <form string="Proveedor">
+                    
+                        <group>
+                            <field name="name"/>
+                            <field name="direccion"/>
+                            <field name="telefono"/>
+                        </group>
+                    
+                </form>
+            </field>
+        </record>
+
+        <!-- Almacén -->
+        <record id="model_producto" model="ir.actions.act_window">
+            <field name="name">Productos</field>
+            <field name="res_model">inventario.producto</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="view_producto_form" model="ir.ui.view">
+            <field name="name">inventario.producto_form</field>
+            <field name="model">inventario.producto</field>
+            <field name="arch" type="xml">
+                <form string="Almacén">
+                    
+                        <group>
+                            <field name="name"/>
+            				<field name="descripcion"/>
+                        </group>
+                    
+                </form>
+            </field>
+        </record>
+
+        <!-- Pedido de Compra -->
+        <record id="model_pedido_compra" model="ir.actions.act_window">
+            <field name="name">Compras</field>
+            <field name="res_model">inventario.compra</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="view_pedido_compra_form" model="ir.ui.view">
+            <field name="name">inventario.compra_form</field>
+            <field name="model">inventario.compra</field>
+            <field name="arch" type="xml">
+                <form string="Pedido de Compra">
+                    
+                        <group>
+                            <field name="proveedor_id"/>
+                            <field name="productos"/>
+                        </group>
+                    
+                </form>
+            </field>
+        </record>
+
+        <!-- Línea de Pedido de Compra -->
+        <record id="model_pedido_compra_linea" model="ir.actions.act_window">
+            <field name="name">Compras en linea</field>
+            <field name="res_model">inventario.linea_compra</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="view_pedido_compra_linea_form" model="ir.ui.view">
+            <field name="name">inventario.linea_compra_form</field>
+            <field name="model">inventario.linea_compra</field>
+            <field name="arch" type="xml">
+                <form string="Línea de Pedido de Compra">
+                    
+                        <group>
+                            <field name="producto_id"/>
+                            <field name="cantidad"/>
+                            <field name="precio_unitario"/>
+                            <field name="pedido_compra_id"/>
+                        </group>
+                    
+                </form>
+            </field>
+        </record>
+
+        <!-- Pedido de Venta -->
+        <record id="model_pedido_venta" model="ir.actions.act_window">
+            <field name="name">Ventas</field>
+            <field name="res_model">inventario.venta</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="view_pedido_venta_form" model="ir.ui.view">
+            <field name="name">inventario.venta_form</field>
+            <field name="model">inventario.venta</field>
+            <field name="arch" type="xml">
+                <form string="Pedido de Venta">
+                    
+                        <group>
+                            <field name="cliente_id"/>
+                            <field name="productos"/>
+                        </group>
+                    
+                </form>
+            </field>
+        </record>
+
+        <!-- Línea de Pedido de Venta -->
+        <record id="model_pedido_venta_linea" model="ir.actions.act_window">
+            <field name="name">Ventas en linea</field>
+            <field name="res_model">inventario.linea_venta</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="view_pedido_venta_linea_form" model="ir.ui.view">
+            <field name="name">inventario.linea_venta_form</field>
+            <field name="model">inventario.linea_venta</field>
+            <field name="arch" type="xml">
+                <form string="Línea de Pedido de Venta">
+                    
+                        <group>
+                            <field name="producto_id"/>
+                            <field name="cantidad"/>
+                            <field name="precio_unitario"/>
+                            <field name="pedido_venta_id"/>
+                        </group>
+                    
+                </form>
+            </field>
+        </record>
+
+        <!-- Cliente -->
+        <record id="model_cliente" model="ir.actions.act_window">
+            <field name="name">Clientes</field>
+            <field name="res_model">inventario.cliente</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="view_cliente_form" model="ir.ui.view">
+            <field name="name">inventario.cliente_form</field>
+            <field name="model">inventario.cliente</field>
+            <field name="arch" type="xml">
+                <form string="Cliente">
+                    
+                        <group>
+                            <field name="name"/>
+                            <field name="direccion"/>
+                            <field name="telefono"/>
+                            <field name="pedidos_venta_ids"/>
+                        </group>
+                    
+                </form>
+            </field>
+        </record>
+
+		 <!-- Elementos de menú -->
+		<!-- Entrada principal de menú -->
+		<menuitem name="Inventario" id="menu_inventario_root"/>
+        
+        <!-- Entradas secundarias de menú -->
+        <menuitem name="Proveedores" id="menu_proveedores" parent="menu_inventario_root" action="model_proveedor"/>
+        <menuitem name="Productos" id="menu_productos" parent="menu_inventario_root" action="model_producto"/>
+        <menuitem name="Pedidos de Compra" id="menu_pedidos_compra" parent="menu_inventario_root" action="model_pedido_compra"/>
+        <menuitem name="Pedidos de Compra en linea" id="menu_lineas_pedido_compra" parent="menu_inventario_root" action="model_pedido_compra_linea"/>
+        <menuitem name="Pedidos de Venta" id="menu_pedidos_venta" parent="menu_inventario_root" action="model_pedido_venta"/>
+        <menuitem name="Pedidos de Venta en linea" id="menu_lineas_pedido_venta" parent="menu_inventario_root" action="model_pedido_venta_linea"/>
+        <menuitem name="Clientes" id="menu_clientes" parent="menu_inventario_root" action="model_cliente"/>
+		
+
+    </data>
+</odoo>

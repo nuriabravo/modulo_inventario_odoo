@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_inventario_venta,inventario.venta,model_inventario_venta,base.group_user,1,1,1,1
+access_inventario_compra,inventario.compra,model_inventario_compra,base.group_user,1,1,1,1
+access_inventario_cliente,inventario.cliente,model_inventario_cliente,base.group_user,1,1,1,1
+access_inventario_linea_venta,inventario.linea_venta,model_inventario_linea_venta,base.group_user,1,1,1,1
+access_inventario_linea_compra,inventario.linea_compra,model_inventario_linea_compra,base.group_user,1,1,1,1
+access_inventario_proveedor,inventario.proveedor,model_inventario_proveedor,base.group_user,1,1,1,1
+access_inventario_producto,inventario.producto,model_inventario_producto,base.group_user,1,1,1,1
