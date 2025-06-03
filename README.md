@@ -11,7 +11,6 @@ Este módulo para Odoo ha sido diseñado específicamente para gestionar las ope
 - **Gestión de Ventas**: Procesa ventas, genera facturas y recibos, y administra devoluciones.
 - **Administración de Clientes**: Gestiona la información de clientes, historial de compras y preferencias.
 - **Proveedores**: Mantén registros de proveedores y realiza pedidos de reposición automáticamente.
-- **Reportes**: Genera reportes personalizados sobre ventas, inventario, clientes y más.
 
 ## Requisitos
 
